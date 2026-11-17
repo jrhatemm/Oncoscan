@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Oncoscan — AI-Powered Early Cancer Detection</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGU3Yzg2Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTRiOGE2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMjIiIGZpbGw9InVybCgjZykiLz4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8cGF0aCBkPSJNMjIgMzRWMjZhNCA0IDAgMCAxIDQtNGg4TTYyIDIyaDhhNCA0IDAgMCAxIDQgNHY4TTc0IDYydjhhNCA0IDAgMCAxLTQgNGgtOE0zNCA3NGgtOGE0IDQgMCAwIDEtNC00di04IiBzdHJva2Utd2lkdGg9IjUiIG9wYWNpdHk9Ii41NSIvPgo8Y2lyY2xlIGN4PSI0OCIgY3k9IjQ4IiByPSIxNyIgc3Ryb2tlLXdpZHRoPSI3Ii8+CjxwYXRoIGQ9Ik0zMCA0OGg4bDQtNyA2IDE0IDQtN2gxMCIgc3Ryb2tlLXdpZHRoPSIzLjUiIG9wYWNpdHk9IjAiIC8+CjwvZz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--tx:#0f1b2d;--mu:#5b6b80;--ac:#0e7c86;--ac2:#14b8a6;--bd:#dde4ee;--warn:#b45309;--ok:#15803d;--bad:#b91c1c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#121c2f;--tx:#e8eef7;--mu:#93a3b8;--ac:#2dd4bf;--ac2:#0e7c86;--bd:#22304a;--warn:#fbbf24;--ok:#4ade80;--bad:#f87171}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#121c2f;--tx:#e8eef7;--mu:#93a3b8;--ac:#2dd4bf;--ac2:#0e7c86;--bd:#22304a;--warn:#fbbf24;--ok:#4ade80;--bad:#f87171}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.3px}.logo span{color:var(--ac)}
+nav a{color:var(--mu);text-decoration:none;margin-left:18px;font-size:14px}
+.hero{padding:56px 0 40px;text-align:center}
+.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;margin:0 0 16px;letter-spacing:-1px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mu);max-width:620px;margin:0 auto 26px;font-size:18px}
+.btn{display:inline-block;background:var(--ac);color:#fff;border:0;padding:12px 24px;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none}
+:root:not([data-theme="light"]) .btn{color:#042f2e}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px}
+.stats b{display:block;font-size:28px;color:var(--ac)}.stats span{color:var(--mu);font-size:13px}
+h2{font-size:28px;margin:54px 0 8px;letter-spacing:-.5px}.sub{color:var(--mu);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card h3{margin:6px 0;font-size:17px}.card p{margin:0;color:var(--mu);font-size:14px}
+.n{width:32px;height:32px;border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;font-weight:700}
+:root:not([data-theme="light"]) .n{color:#042f2e}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.demo{grid-template-columns:1fr}}
+.drop{border:2px dashed var(--bd);border-radius:12px;min-height:240px;display:grid;place-items:center;text-align:center;padding:16px;cursor:pointer;color:var(--mu);position:relative;overflow:hidden}
+.drop img{max-width:100%;max-height:260px;border-radius:8px}
+select{width:100%;padding:10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);margin:8px 0 12px;font:inherit}
+.bar{height:10px;border-radius:6px;background:var(--bd);overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;width:0;transition:width .9s}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:600;border:1px solid currentColor}
+.disc{border-left:4px solid var(--warn);background:var(--card);padding:14px 18px;border-radius:8px;color:var(--mu);font-size:14px;margin-top:20px}
+pre{background:#0b1220;color:#d6e2f3;padding:16px;border-radius:10px;overflow-x:auto;font-size:13px;line-height:1.5;margin:0}.hm{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--mu)}.hm input{flex:1}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 10px}.tabs button{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+body{background:radial-gradient(900px 420px at 50% -100px,rgba(20,184,166,.20),transparent),var(--bg)}
+.hero h1{font-size:clamp(32px,6.4vw,58px)}
+.pill{display:inline-block;padding:5px 14px;border:1px solid var(--bd);background:var(--card);border-radius:20px;font-size:13px;color:var(--ac);font-weight:600;margin-bottom:18px}
+.card{box-shadow:0 1px 2px rgba(15,27,45,.05);transition:transform .2s,box-shadow .2s}
+.grid .card:hover,.stats .card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,124,134,.14)}
+.feed{max-width:700px;margin:0 auto;display:grid;gap:14px}
+.post{display:flex;gap:14px;align-items:flex-start}.post svg{flex:none;border-radius:50%}
+.who{font-weight:700;line-height:1.3}.role{font-size:13px;color:var(--mu)}
+.post p{margin:8px 0 12px;font-size:15px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.chips span{font-size:12px;padding:2px 10px;border-radius:20px;background:var(--bg);border:1px solid var(--bd);color:var(--mu)}
+.like{margin-left:auto;background:none;border:1px solid var(--bd);color:var(--mu);border-radius:20px;padding:4px 12px;cursor:pointer;font:inherit;font-size:13px}.like.on{color:var(--bad);border-color:var(--bad)}
+.logo{display:flex;align-items:center;gap:8px;color:var(--ac);font-size:18px;letter-spacing:-.2px}.logo span{color:var(--tx)}
+.hero{padding:72px 0 48px}
+.hero h1{font-size:clamp(34px,7vw,66px);line-height:1.05;font-weight:800;letter-spacing:-2px;max-width:860px;margin:0 auto 20px;animation:up .7s both}
+.hero h1 em{background:linear-gradient(90deg,var(--ac),#38bdf8,var(--ac2),var(--ac));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+.hero p{font-size:clamp(16px,2.2vw,20px);max-width:660px;animation:up .7s .15s both}
+.pill{animation:up .7s both}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:up .7s .3s both}
+.btn{padding:14px 28px;font-size:16px;box-shadow:0 8px 20px rgba(14,124,134,.28)}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--bd);box-shadow:none}
+:root:not([data-theme="light"]) .btn.ghost{color:var(--tx)}
+h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-1px;margin-top:64px}
+h2::after{content:"";display:block;width:46px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--ac),var(--ac2));margin-top:10px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes flow{to{background-position:-250% 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+footer{padding:40px 0;color:var(--mu);font-size:13px;text-align:center}
+.pipe{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.pipe div{padding:10px 14px;border:1px solid var(--bd);background:var(--card);border-radius:10px;font-size:14px}.pipe b{color:var(--ac)}
+</style></head><body><div class="w">
+<nav><div class="logo" style="gap:10px;font-weight:800;font-size:22px;letter-spacing:-.5px"><svg width="34" height="34" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs><linearGradient id="ogn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e7c86"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="url(#ogn)"/>
+<g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+<path d="M22 34V26a4 4 0 0 1 4-4h8M62 22h8a4 4 0 0 1 4 4v8M74 62v8a4 4 0 0 1-4 4h-8M34 74h-8a4 4 0 0 1-4-4v-8" stroke-width="5" opacity=".55"/>
+<circle cx="48" cy="48" r="17" stroke-width="7"/>
+<path d="M30 48h8l4-7 6 14 4-7h10" stroke-width="3.5" opacity="0" />
+</g>
+<circle cx="48" cy="48" r="5" fill="#fff"/></svg><span style="color:var(--tx)">Onco<span style="color:var(--ac)">scan</span></span></div><div><a href="#how">How it works</a><a href="#demo">Try the demo</a><a href="#models">AI models</a><a href="#doctors">Clinicians</a><a href="#tech">Technology</a></div></nav>
+
+<section class="hero"><span class="pill">Deep learning · Medical imaging · Explainable AI</span>
+<h1>Smarter, earlier detection of <em>cancerous tumors</em></h1>
+<p><b>Oncoscan</b> is an AI-powered system that reads medical scans, highlights suspicious regions and gives clinicians a fast, explainable second opinion.</p>
+<div class="cta"><a class="btn" href="#demo">Try the demo</a><a class="btn ghost" href="#how">How it works</a></div></section>
+
+<div class="stats"><div class="card"><b>8</b><span>Cancer types supported</span></div><div class="card"><b>&lt; 10 s</b><span>Analysis time per scan</span></div><div class="card"><b>Heatmaps</b><span>Explainable results</span></div><div class="card"><b>Human-in-loop</b><span>Clinician makes the call</span></div></div>
+
+<h2 id="how">How it works</h2><p class="sub">From upload to a clinician-ready report in four steps.</p>
+<div class="grid">
+<div class="card"><div class="n">1</div><h3>Upload</h3><p>Securely upload a mammogram, chest X-ray, CT or histopathology image.</p></div>
+<div class="card"><div class="n">2</div><h3>Pre-process</h3><p>Normalization, resizing and quality checks prepare the image for the model.</p></div>
+<div class="card"><div class="n">3</div><h3>Analyze</h3><p>A convolutional neural network scores risk and flags regions of interest.</p></div>
+<div class="card"><div class="n">4</div><h3>Report</h3><p>Confidence score and heatmap are returned for clinician review.</p></div></div>
+
+<h2 id="demo">Try the demo</h2><p class="sub">Upload an X-ray image (PNG, JPG or WEBP) to see the result flow. Other kinds of photos are rejected. This demo uses a simulated model, so results are not real diagnoses.</p>
+<div class="card"><div class="demo">
+<div><label class="drop" id="drop"><input id="f" type="file" accept="image/png,image/jpeg,image/webp" hidden><span id="ph">Click to choose an X-ray image</span><div id="pv" style="display:none"></div></label>
+<select id="type"><option>Lung cancer · Chest X-ray</option><option>Breast cancer · Mammogram (X-ray)</option><option>Liver cancer · CT (X-ray based)</option><option>Bone tumor · Bone X-ray</option></select>
+<button class="btn" id="go" style="width:100%">Analyze scan</button>
+<button class="btn ghost" id="rst" style="width:100%;margin-top:8px;display:none">Reset image</button></div>
+<div id="res"><p style="color:var(--mu)">Results will appear here.</p></div></div></div>
+<div class="disc"><b>Medical disclaimer:</b> This system is a research and educational prototype. It is not a certified medical device and must not be used for diagnosis or treatment decisions. Always consult a qualified physician.</div>
+
+<h2 id="models">AI models</h2><p class="sub">Different architectures suit different imaging types. All use transfer learning from ImageNet.</p>
+<div class="grid">
+<div class="card"><h3>ResNet-50</h3><p>Reliable all-rounder for mammography, MRI and CT classification. Dataset ideas: CBIS-DDSM, BraTS.</p></div>
+<div class="card"><h3>DenseNet-121</h3><p>Popular for chest X-rays (the CheXNet family). Dataset ideas: NIH ChestX-ray14, LUNA16.</p></div>
+<div class="card"><h3>EfficientNet-B4</h3><p>High accuracy at low cost for skin and pathology images. Dataset ideas: ISIC, LC25000.</p></div>
+<div class="card"><h3>U-Net</h3><p>Segmentation model that outlines the exact tumor boundary, useful for brain MRI and liver CT.</p></div>
+<div class="card"><h3>Vision Transformer</h3><p>Captures global context in large histopathology slides. Dataset idea: Camelyon.</p></div>
+<div class="card"><h3>Grad-CAM</h3><p>Explainability layer that produces the heatmap showing where the model looked.</p></div></div>
+
+<h2 id="doctors">What clinicians say</h2><p class="sub">Early feedback from specialists on this project.</p>
+<div class="disc" style="margin:0 0 16px;border-left-color:var(--ac)"><b>Sample content:</b> these doctors and opinions are fictional placeholders for the design. Replace them with real, consented clinician reviews before sharing the site publicly.</div>
+<div class="feed" id="feed"></div>
+
+<h2 id="tech">Technology</h2><p class="sub">A modular pipeline where the mock service can be replaced by a real model backend.</p>
+<div class="card"><div class="pipe"><div>React front end</div><b>→</b><div>REST API</div><b>→</b><div>Pre-processing</div><b>→</b><div>CNN model (e.g. ResNet / EfficientNet)</div><b>→</b><div>Grad-CAM heatmap</div><b>→</b><div>Report</div></div></div>
+
+<footer><b style="color:var(--tx)">Onco<span style="color:var(--ac)">scan</span></b> · © 2026 · Graduation project · Research prototype only</footer></div>
+<script>
+const $=id=>document.getElementById(id);let img=null;
+const MAXMB=10;
+function setMsg(t,c){$('res').innerHTML='<p style="color:var('+(c||'--mu')+')">'+t+'</p>'}
+function resetAll(){img=null;$('f').value='';$('pv').innerHTML='';$('pv').style.display='none';$('ph').style.display='';$('rst').style.display='none';setMsg('Results will appear here.')}
+// Heuristic X-ray check: radiographs are grayscale with real tonal contrast. Colour photos, screenshots and flat images are rejected.
+// A heuristic cannot be perfect; for production, replace with a trained "is this an X-ray?" classifier on the backend.
+function xrayCheck(im){
+ const W=96,H=Math.min(192,Math.max(24,Math.round(96*im.naturalHeight/im.naturalWidth)));
+ const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(im,0,0,W,H);
+ const d=x.getImageData(0,0,W,H).data,n=W*H;let sum=0,sq=0,chroma=0,col=0;
+ for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2],ch=Math.max(r,g,b)-Math.min(r,g,b);chroma+=ch;if(ch>30)col++;const l=.299*r+.587*g+.114*b;sum+=l;sq+=l*l}
+ const mean=sum/n,sd=Math.sqrt(Math.max(0,sq/n-mean*mean));
+ if(chroma/n>=10||col/n>=.05)return{ok:false,why:'it is a colour image'};
+ if(sd<20)return{ok:false,why:'it has too little contrast'};
+ return{ok:true}}
+$('f').onchange=e=>{const f=e.target.files[0];if(!f)return;
+ if(!/^image\/(png|jpe?g|webp)$/.test(f.type)){resetAll();setMsg('Only PNG, JPG or WEBP X-ray images are accepted.','--bad');return}
+ if(f.size>MAXMB*1048576){resetAll();setMsg('File is too large (max '+MAXMB+' MB).','--bad');return}
+ const r=new FileReader();r.onload=()=>{const im=new Image();
+  im.onerror=()=>{resetAll();setMsg('Could not read that file as an image.','--bad')};
+  im.onload=()=>{
+   if(im.naturalWidth<150||im.naturalHeight<150){resetAll();setMsg('Image is too small to be a valid scan (minimum 150×150 px).','--bad');return}
+   const t=xrayCheck(im);if(!t.ok){resetAll();setMsg('Rejected: this does not look like an X-ray ('+t.why+'). Please upload an X-ray image only.','--bad');return}
+   img=r.result;$('ph').style.display='none';$('pv').style.display='';
+   $('pv').innerHTML='<div style="position:relative;display:inline-block"><img alt="Uploaded scan" src="'+img+'"><canvas id="hm" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;border-radius:8px"></canvas></div>';
+   $('rst').style.display='';setMsg('Results will appear here.')};
+  im.src=r.result};r.readAsDataURL(f)};
+$('rst').onclick=resetAll;
+// Mock AI service: replace body with fetch('/api/analyze') to a real model backend.
+function mockAnalyze(type){return new Promise(res=>setTimeout(()=>{const p=Math.random();res({type,risk:p,label:p<.35?'Low risk':p<.7?'Moderate risk':'High risk',conf:Math.round(82+Math.random()*14)})},1400))}
+const DOCS=[
+{n:'Dr. Amira Hassan',r:'Radiologist · University Hospital',c:'#0e7c86',s:'#e8b894',h:'#2b1d14',t:'The heatmap is what won me over. Seeing where the model looked makes it a second reader I can actually question, not a black box.',k:['Radiology','Explainability']},
+{n:'Dr. Omar Farouk',r:'Medical Oncologist',c:'#6d5bd0',s:'#c68a63',h:'#1a1a1a',t:'Earlier flagging of suspicious regions could shorten the time to biopsy. I would want to see validation on local patient data before relying on it.',k:['Oncology','Early detection']},
+{n:'Dr. Layla Nasser',r:'Pathologist · Cancer Institute',c:'#d9594c',s:'#f0c9a8',h:'#6b3f1d',t:'Support for histopathology is a smart addition. Slides take hours to screen, and a tool that prioritizes the worrying ones helps a busy lab.',k:['Pathology','Workflow']},
+{n:'Dr. Karim Adel',r:'Pulmonologist',c:'#2a9d5c',s:'#d9a47c',h:'#3a2a1a',t:'Lung nodules are easy to miss on a crowded chest film. A confidence score alongside the highlighted area is exactly the format I would trust.',k:['Lung','Chest imaging']},
+{n:'Dr. Sara Mansour',r:'Breast Surgeon',c:'#e08a2e',s:'#f2cfae',h:'#101010',t:'Clear wording matters. I like that every result says a specialist must review it. Keep that front and center and patients will trust the tool more.',k:['Breast','Patient safety']}];
+const av=d=>`<svg viewBox="0 0 64 64" width="54" height="54" role="img" aria-label="${d.n}"><circle cx="32" cy="32" r="32" fill="${d.c}"/><path d="M10 64c2-14 12-20 22-20s20 6 22 20z" fill="#fff"/><circle cx="32" cy="27" r="11" fill="${d.s}"/><path d="M21 25c0-9 6-13 11-13s11 4 11 13c-3-5-8-6-11-6s-8 1-11 6z" fill="${d.h}"/></svg>`;
+$('feed').innerHTML=DOCS.map(d=>`<div class="card post">${av(d)}<div style="flex:1"><div class="who">${d.n}</div><div class="role">${d.r}</div><p>“${d.t}”</p><div class="chips">${d.k.map(x=>'<span>'+x+'</span>').join('')}<button class="like" onclick="this.classList.toggle('on');this.textContent=this.classList.contains('on')?'♥ Liked':'♡ Like'">♡ Like</button></div></div></div>`).join('');
+$('go').onclick=async()=>{
+ if(!img){$('res').innerHTML='<p style="color:var(--bad)">Please upload an X-ray image first.</p>';return}
+ $('res').innerHTML='<p style="color:var(--mu)">Analyzing…</p>';
+ const r=await mockAnalyze($('type').value);const c=r.risk<.35?'--ok':r.risk<.7?'--warn':'--bad';const pct=Math.round(r.risk*100);
+ $('res').innerHTML='<span class="tag" style="color:var('+c+')">'+r.label+'</span><h3 style="margin:12px 0 0">'+r.type+'</h3>'
+ +'<p style="color:var(--mu);margin:4px 0">Suspicion score: '+pct+'%</p><div class="bar"><i id="b" style="background:var('+c+')"></i></div>'
+ +'<p style="color:var(--mu);margin:0">Model confidence: '+r.conf+'%</p><p style="margin-top:12px;font-size:14px">Recommendation: have a radiologist review this scan'+(r.risk>=.35?' and consider follow-up imaging.':'.')+'</p><p style="font-size:12px;color:var(--mu)">Simulated output for demonstration only.</p>';
+ requestAnimationFrame(()=>$('b').style.width=pct+'%');heat(r.risk);
+ $('res').insertAdjacentHTML('beforeend','<label class="hm">Heatmap<input type="range" min="0" max="100" value="100" oninput="$(\'hm\').style.opacity=this.value/100"></label><p style="font-size:13px;color:var(--mu);margin:8px 0 0">'+(r.risk<.35?'No suspicious regions flagged.':'Red areas show regions that influenced the prediction (simulated Grad-CAM).')+'</p>')};
+function heat(risk){const cv=$('hm');if(!cv)return;const im=cv.previousElementSibling;cv.width=im.clientWidth;cv.height=im.clientHeight;const x=cv.getContext('2d'),W=cv.width,H=cv.height;x.clearRect(0,0,W,H);if(risk<.35)return;const n=risk>.7?3:2;for(let i=0;i<n;i++){const cx=W*(.25+Math.random()*.5),cy=H*(.25+Math.random()*.5),r=Math.min(W,H)*(.14+Math.random()*.1)*(.8+risk);const g=x.createRadialGradient(cx,cy,0,cx,cy,r);g.addColorStop(0,'rgba(255,0,0,.8)');g.addColorStop(.45,'rgba(255,190,0,.5)');g.addColorStop(1,'rgba(0,200,255,0)');x.fillStyle=g;x.fillRect(0,0,W,H)}}
+</script></body></html>
